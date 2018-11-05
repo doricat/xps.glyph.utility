@@ -51,10 +51,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Canvas.cs" />
     <Compile Include="Document.cs" />
+    <Compile Include="FixPage.cs" />
+    <Compile Include="Font.cs" />
+    <Compile Include="Glyphs.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schemas.cs" />
+    <Compile Include="StyleSimulations.cs" />
+    <Compile Include="Text.cs" />
+    <Compile Include="TextSpan.cs" />
+    <Compile Include="VisualElement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
