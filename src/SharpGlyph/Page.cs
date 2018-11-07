@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using System.Xml.Linq;
+using Size = System.Windows.Size;
 
 namespace SharpGlyph
 {
@@ -73,11 +75,11 @@ namespace SharpGlyph
                 {
                     TagId = item.Glyphs.TagId,
                     FontName = item.Glyphs.Font.Name,
-                    Box = item.SpanBox
+                    Box = new RectangleF((float)item.SpanBox.X, (float)item.SpanBox.Y, (float)item.SpanBox.Width, (float)item.SpanBox.Height)
                 };
                 span.AddRange(item.Select(x => new TextModel
                 {
-                    Box = x.GlyphBox,
+                    Box = new RectangleF((float)x.GlyphBox.X, (float)x.GlyphBox.Y, (float)x.GlyphBox.Width, (float)x.GlyphBox.Height),
                     Char = x.Char
                 }));
                 result.Add(span);

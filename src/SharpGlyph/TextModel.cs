@@ -1,4 +1,4 @@
-﻿using System.Windows;
+﻿using System.Drawing;
 
 namespace SharpGlyph
 {
@@ -6,6 +6,6 @@ namespace SharpGlyph
     {
         public char Char { get; set; }
 
-        public Rect Box { get; set; }
+        public RectangleF Box { get; set; }
     }
 }

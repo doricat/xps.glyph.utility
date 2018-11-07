@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Windows;
+using System.Drawing;
 
 namespace SharpGlyph
 {
@@ -9,7 +9,7 @@ namespace SharpGlyph
 
         public string FontName { get; set; }
 
-        public Rect Box { get; set; }
+        public RectangleF Box { get; set; }
 
         public bool IsSideways { get; set; }
     }
