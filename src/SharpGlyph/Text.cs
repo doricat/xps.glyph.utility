@@ -31,6 +31,8 @@ namespace SharpGlyph
 
         public double AbsoluteWidth { get; }
 
+        public Rect GlyphBox { get; protected set; }
+
         public Rect BoundGlyph(Matrix transformMatrix, Glyphs glyphs)
         {
             var font = Span.Glyphs.Font;
@@ -48,8 +50,9 @@ namespace SharpGlyph
             }
 
             rect.Transform(transformMatrix);
+            GlyphBox = new Rect(rect.Location, new Size(font.BBoxTable != null && GlyphIndex < font.GlyphCount ? rect.Width : rect.Width * AbsoluteWidth / 100, rect.Height));
 
-            return new Rect(rect.Location, new Size(font.BBoxTable != null && GlyphIndex < font.GlyphCount ? rect.Width : rect.Width * AbsoluteWidth / 100, rect.Height));
+            return GlyphBox;
         }
     }
 }

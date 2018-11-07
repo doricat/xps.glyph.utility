@@ -8,8 +8,16 @@ using SharpFont.TrueType;
 
 namespace SharpGlyph
 {
-    public class Font
+    public class Font : DisposableBase
     {
+        internal Font(Stream stream, string uri)
+        {
+            Uri = uri;
+            var buf = new byte[stream.Length];
+            stream.Read(buf, 0, buf.Length);
+            Init(buf);
+        }
+
         protected byte[] Data { get; set; }
 
         protected Face FtFace { get; set; }
@@ -51,7 +59,7 @@ namespace SharpGlyph
             return new Tuple<double, double, double>(hadv.Value / (float) FtFace.UnitsPerEM, vadv.Value / (float) FtFace.UnitsPerEM, FtFace.Ascender / (float) FtFace.UnitsPerEM);
         }
 
-        protected virtual void DeobfuscateFontResource(byte[] buf)
+        protected void DeobfuscateFontResource(byte[] buf)
         {
             if (buf.Length < 32)
                 throw new InvalidOperationException("insufficient data for font deobfuscation");
@@ -93,12 +101,17 @@ namespace SharpGlyph
             }
         }
 
-        protected virtual Matrix AdjustGlyphWidth(uint glyphIndex)
+        protected Matrix AdjustGlyphWidth(uint glyphIndex)
         {
             return Matrix.Identity;
         }
 
-        internal virtual Rect BoundGlyph(uint glyphIndex, StyleSimulations style)
+        protected override void DisposeCore()
+        {
+            FtFace?.Dispose();
+        }
+
+        internal Rect BoundGlyph(uint glyphIndex, StyleSimulations style)
         {
             var recip = 1 / (float) FtFace.UnitsPerEM;
             //var strength = 0.02f;

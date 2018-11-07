@@ -52,8 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Canvas.cs" />
+    <Compile Include="DisposableBase.cs" />
     <Compile Include="Document.cs" />
-    <Compile Include="FixPage.cs" />
+    <Compile Include="FixedDocument.cs" />
+    <Compile Include="FixedPage.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="Glyphs.cs" />
     <Compile Include="Page.cs" />
@@ -61,7 +63,11 @@
     <Compile Include="Schemas.cs" />
     <Compile Include="StyleSimulations.cs" />
     <Compile Include="Text.cs" />
+    <Compile Include="TextModel.cs" />
     <Compile Include="TextSpan.cs" />
+    <Compile Include="TextSpanModel.cs" />
+    <Compile Include="TextSpans.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="VisualElement.cs" />
   </ItemGroup>
   <ItemGroup>

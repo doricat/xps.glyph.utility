@@ -6,7 +6,7 @@ namespace SharpGlyph
 {
     public class TextSpan : List<Text>
     {
-        public TextSpan(Glyphs glyphs, Matrix transformMatrix, bool isSideways, int bidiLevel, int markupDir)
+        internal TextSpan(Glyphs glyphs, Matrix transformMatrix, bool isSideways, int bidiLevel, int markupDir)
         {
             Glyphs = glyphs;
             TransformMatrix = transformMatrix;
@@ -24,6 +24,8 @@ namespace SharpGlyph
         public int BidiLevel { get; }
 
         public int MarkupDir { get; }
+
+        internal Rect SpanBox { get; set; }
 
         public Rect BoundText(Matrix transformMatrix)
         {
@@ -43,6 +45,7 @@ namespace SharpGlyph
 
             if (!result.IsEmpty)
                 result.Inflate(new Size(1, 1));
+            SpanBox = result;
 
             return result;
         }
