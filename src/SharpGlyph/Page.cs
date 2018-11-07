@@ -41,6 +41,13 @@ namespace SharpGlyph
             }
         }
 
+        public static Page Parse(XElement xmlNode, Document document, FixedPage fixPage)
+        {
+            var page = new Page(xmlNode, document, fixPage);
+            page.Init();
+            return page;
+        }
+
         public void Init()
         {
             ParseMetadata();

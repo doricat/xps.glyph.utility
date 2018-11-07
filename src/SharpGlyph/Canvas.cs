@@ -58,13 +58,13 @@ namespace SharpGlyph
                     case "Path":
                         break;
                     case "Glyphs":
-                        var glyphs = new Glyphs(Page, xElement, this);
+                        var glyphs = Glyphs.Parse(Page, xElement, this);
                         var span = glyphs.GetContent();
                         if (span != null)
                             _spans.Add(span);
                         break;
                     case "Canvas":
-                        var canvas = new Canvas(Page, xElement, this);
+                        var canvas = Canvas.Parse(Page, xElement, this);
                         _spans.AddRange(canvas.GetContent());
                         break;
                 }
